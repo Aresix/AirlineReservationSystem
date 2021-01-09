@@ -5,14 +5,14 @@ import myClass.Flight;
 
 import java.util.ArrayList;
 
-public class DongFangAirline implements Airline {
+public class DongFangAirline extends Airline {
 
     private String airlineID;
     private String name;
     private ArrayList<Flight> flights = new ArrayList<Flight>();
 
     public DongFangAirline() {
-        this.airlineID  = "A0002";
+        this.airlineID = "A0002";
         this.name = "东方航空";
     }
 
@@ -28,7 +28,7 @@ public class DongFangAirline implements Airline {
 
     @Override
     public void setAirlineID(String airlineID) {
-        this.airlineID=airlineID;
+        this.airlineID = airlineID;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class DongFangAirline implements Airline {
 
     @Override
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     @Override

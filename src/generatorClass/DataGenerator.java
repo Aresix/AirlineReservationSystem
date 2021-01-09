@@ -5,7 +5,7 @@ import myClass.*;
 import java.util.ArrayList;
 
 import static generatorClass.AirportGenerator.initAirport;
-import static generatorClass.AirlineGenerator.initAirline;
+import static generatorClass.AirlineFactory.initAirline;
 import static generatorClass.CityGenerator.initCity;
 import static generatorClass.FlightGenerator.initFlight;
 import static generatorClass.PlaneGenerator.initPlane;

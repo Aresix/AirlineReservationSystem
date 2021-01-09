@@ -1,14 +1,11 @@
 package generatorClass;
 
-import AirlineInstance.ChunQiuAirline;
-import AirlineInstance.DongFangAirline;
-import AirlineInstance.JiXiangAirline;
-import AirlineInstance.NanFangAirline;
+import AirlineInstance.*;
 import myClass.Airline;
 
 import java.util.ArrayList;
 
-public class AirlineGenerator {
+public class AirlineFactory {
     public static ArrayList<Airline> initAirline() {
         ArrayList<Airline> airlines = new ArrayList<Airline>();
         airlines.add(new ChunQiuAirline());

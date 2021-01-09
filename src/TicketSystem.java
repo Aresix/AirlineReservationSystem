@@ -37,8 +37,6 @@ public class TicketSystem {
 
     public static void main(String[] args) {
 
-
-
         // 初始化用户信息： 相当于注册的功能
         Customer customer = new RegisterClass().Register();
 
@@ -48,7 +46,7 @@ public class TicketSystem {
         printService();
         Scanner scanner = new Scanner(java.lang.System.in);
         while (true) {
-            boolean fin=false;
+            boolean fin = false;
 
             Reservation r = new Reservation(new Date());
 
@@ -74,12 +72,12 @@ public class TicketSystem {
                     break;
                 case 7: // 退出
                     java.lang.System.out.println("祝您旅途愉快！再见！");
-                    fin=true;
+                    fin = true;
                     break;
                 default:
                     break;
             }
-            if(fin) break;
+            if (fin) break;
             java.lang.System.out.println("\n还可继续选择如下服务：");
             printService();
         }

@@ -5,7 +5,7 @@ import myClass.Flight;
 
 import java.util.ArrayList;
 
-public class JiXiangAirline implements Airline {
+public class JiXiangAirline extends Airline {
 
     private String airlineID;
     private String name;

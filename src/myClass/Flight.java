@@ -1,6 +1,5 @@
 package myClass;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Flight {
@@ -11,11 +10,12 @@ public class Flight {
     private Airline airline;
     private Plane plane;
 
-    public Flight(Airport departure, Airport destination, String flightID, Date date) {
+    public Flight(Airport departure, Airport destination, String flightID, Date date, Airline airline) {
         this.departure = departure;
         this.destination = destination;
         this.flightID = flightID;
         this.date = date;
+        this.airline = airline;
     }
 
     public Airport getDeparture() {
@@ -65,14 +65,14 @@ public class Flight {
     public void printAirline() {
         System.out.println("====================================================");
         System.out.println("当前航班信息：");
-        System.out.println("航班号： "+flightID);
-        System.out.println("出发地: 【"+departure.getAirportID()+"】"+departure.getName()+
-                " ("+departure.getCity().getName()+", "+departure.getCity().getCountry()+")");
-        System.out.println("目的地: 【"+destination.getAirportID()+"】"+destination.getName()+
-                " ("+destination.getCity().getName()+", "+destination.getCity().getCountry()+")");
-        System.out.println("时  刻: "+date.toString());
-        System.out.println("航空公司: 【"+airline.getAirlineID()+"】"+airline.getName());
-        if(plane!=null)
+        System.out.println("航班号： " + flightID);
+        System.out.println("出发地: 【" + departure.getAirportID() + "】" + departure.getName() +
+                " (" + departure.getCity().getName() + ", " + departure.getCity().getCountry() + ")");
+        System.out.println("目的地: 【" + destination.getAirportID() + "】" + destination.getName() +
+                " (" + destination.getCity().getName() + ", " + destination.getCity().getCountry() + ")");
+        System.out.println("时  刻: " + date.toString());
+        System.out.println("航空公司: 【" + airline.getAirlineID() + "】" + airline.getName());
+        if (plane != null)
             plane.getPlane();
     }
 

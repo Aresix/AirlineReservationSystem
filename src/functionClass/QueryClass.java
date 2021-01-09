@@ -11,6 +11,7 @@ import static util.FlightBuffer.flightsT;
 public class QueryClass {
     public void Query(){
 //        ArrayList<Flight> flightsT=new ArrayList<Flight>();
+        flightsT.clear();
         java.lang.System.out.println("本系统仅提供【1】上海【2】北京【3】广州三地之间的机票。");
         java.lang.System.out.println("请输入你的出发地。输入数字即可，如输入2，即代表北京。" +
                 "若输入0，则代表出发地包含所有三个城市。");
@@ -27,7 +28,7 @@ public class QueryClass {
         if (departureID == 0 && destinationID == 0) {
             for (Flight f : flights) {
                 i++;
-                java.lang.System.out.println("第\t" + i + "\t条");
+                java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                 f.printAirline();
                 flightsT.add(f);
             }
@@ -35,7 +36,7 @@ public class QueryClass {
             for (Flight f : flights) {
                 if (f.getDestination().getCity().equals(cities.get(destinationID - 1))) {
                     i++;
-                    java.lang.System.out.println("第\t" + i + "\t条");
+                    java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                     f.printAirline();
                     flightsT.add(f);
                 }
@@ -44,7 +45,7 @@ public class QueryClass {
             for (Flight f : flights) {
                 if (f.getDeparture().getCity().equals(cities.get(departureID - 1))) {
                     i++;
-                    java.lang.System.out.println("第\t" + i + "\t条");
+                    java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                     f.printAirline();
                     flightsT.add(f);
                 }
@@ -54,7 +55,7 @@ public class QueryClass {
                 if (f.getDeparture().getCity().equals(cities.get(departureID - 1))
                         && f.getDestination().getCity().equals(cities.get(destinationID - 1))) {
                     i++;
-                    java.lang.System.out.println("第\t" + i + "\t条");
+                    java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                     f.printAirline();
                     flightsT.add(f);
                 }

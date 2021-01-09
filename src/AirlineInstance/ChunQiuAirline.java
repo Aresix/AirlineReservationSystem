@@ -5,7 +5,7 @@ import myClass.Flight;
 
 import java.util.ArrayList;
 
-public class ChunQiuAirline implements Airline {
+public class ChunQiuAirline extends Airline {
 
     private String airlineID;
     private String name;
@@ -28,7 +28,7 @@ public class ChunQiuAirline implements Airline {
 
     @Override
     public void setAirlineID(String airlineID) {
-        this.airlineID=airlineID;
+        this.airlineID = airlineID;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class ChunQiuAirline implements Airline {
 
     @Override
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     @Override
