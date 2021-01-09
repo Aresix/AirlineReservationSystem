@@ -3,14 +3,17 @@ package functionClass;
 import myClass.AirlineTicket;
 import myClass.Refund;
 import myClass.Reservation;
+import myClass.ReservationItem;
+import singleton.ReservationSingleton;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import static util.ReservationBuffer.reservationItems;
 
 public class RefundClass {
-    public void Refund(Reservation r){
+    public void Refund(Reservation r) {
         java.lang.System.out.println("以下是您的订单：");
+        ArrayList<ReservationItem> reservationItems = ReservationSingleton.getReservationItems();
         r.printSimpleReservationInfo(reservationItems);
         java.lang.System.out.println("============================================================");
         java.lang.System.out.println("输入要退的订单编号：(若输入数字不在范围内，则视为放弃退票，回到主界面)");

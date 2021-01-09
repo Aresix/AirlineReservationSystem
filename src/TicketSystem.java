@@ -1,5 +1,6 @@
 import functionClass.*;
 import myClass.*;
+import singleton.ReservationSingleton;
 
 import java.util.ArrayList;
 import java.util.Date;

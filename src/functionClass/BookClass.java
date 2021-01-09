@@ -1,14 +1,13 @@
 package functionClass;
 
 import myClass.*;
+import singleton.FlightSingleton;
+import singleton.ReservationSingleton;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import static generatorClass.DataGenerator.planes;
-import static util.FlightBuffer.flightsT;
 import static util.RandomNumber.randomNumber;
-import static util.ReservationBuffer.reservationItems;
 
 public class BookClass {
     public void BookTicket(Reservation r){
@@ -23,7 +22,7 @@ public class BookClass {
                 scanner = new Scanner(java.lang.System.in);
                 if (scanner.next().equals("1")) {
                     java.lang.System.out.println("您已确认订单，准备扣款");
-                    reservationItems.addAll(r.getReservationItems());
+                    for (ReservationItem ri : r.getReservationItems()) ReservationSingleton.addReservationItems(ri);
                     try {
                         Thread.sleep(1200);
                     } catch (InterruptedException e) {
@@ -31,11 +30,11 @@ public class BookClass {
                     }
                     r.makePayment();
                 }
-                flightsT.clear();
+                FlightSingleton.clearFlightsT();
                 break;
             } else {
                 AirlineTicket airlineTicket = new AirlineTicket(
-                        flightsT.get(fID - 1),
+                        FlightSingleton.getFlightsT().get(fID - 1),
                         planes.get((fID * 1115 + 1220) % 5),
                         randomNumber(11, 30) * 100);
                 java.lang.System.out.println("请完善乘坐人信息：");

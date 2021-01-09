@@ -1,17 +1,18 @@
 package functionClass;
 
 import myClass.Flight;
+import singleton.FlightSingleton;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static generatorClass.DataGenerator.cities;
 import static generatorClass.DataGenerator.flights;
-import static util.FlightBuffer.flightsT;
 
 public class QueryClass {
-    public void Query(){
-//        ArrayList<Flight> flightsT=new ArrayList<Flight>();
-        flightsT.clear();
+    public void Query() {
+        ArrayList<Flight> flightsT = FlightSingleton.getFlightsT();
+//        FlightSingleton.clearFlightsT();
         java.lang.System.out.println("本系统仅提供【1】上海【2】北京【3】广州三地之间的机票。");
         java.lang.System.out.println("请输入你的出发地。输入数字即可，如输入2，即代表北京。" +
                 "若输入0，则代表出发地包含所有三个城市。");
@@ -30,7 +31,7 @@ public class QueryClass {
                 i++;
                 java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                 f.printAirline();
-                flightsT.add(f);
+                FlightSingleton.setFlightsT(f);
             }
         } else if (departureID == 0) {
             for (Flight f : flights) {
@@ -38,7 +39,7 @@ public class QueryClass {
                     i++;
                     java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                     f.printAirline();
-                    flightsT.add(f);
+                    FlightSingleton.setFlightsT(f);
                 }
             }
         } else if (destinationID == 0) {
@@ -47,7 +48,7 @@ public class QueryClass {
                     i++;
                     java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                     f.printAirline();
-                    flightsT.add(f);
+                    FlightSingleton.setFlightsT(f);
                 }
             }
         } else {
@@ -57,7 +58,7 @@ public class QueryClass {
                     i++;
                     java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                     f.printAirline();
-                    flightsT.add(f);
+                    FlightSingleton.setFlightsT(f);
                 }
             }
         }
