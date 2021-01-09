@@ -1,17 +1,18 @@
 package generatorClass;
 
-import myClass.Airline;
+import myClass.Airport;
+import myClass.City;
 
 import java.util.ArrayList;
 
 public class AirportGenerator {
-    public static ArrayList<Airline> initAirline() {
-        ArrayList<Airline> airlines = new ArrayList<Airline>();
-        airlines.add(new Airline("A0001", "春秋国旅"));
-        airlines.add(new Airline("A0002", "东方航空"));
-        airlines.add(new Airline("A0003", "吉祥航空"));
-        airlines.add(new Airline("A0004", "南方航空"));
-//        for (Airline airline : airlines) airline.getAirline();
-        return airlines;
+    public static ArrayList<Airport> initAirport(ArrayList<City> cities) {
+        ArrayList<Airport> airports = new ArrayList<Airport>();
+        airports.add(new Airport("0001", "浦东国际机场", cities.get(0)));
+        airports.add(new Airport("0002", "虹桥国际机场", cities.get(0)));
+        airports.add(new Airport("0003", "大兴国际机场", cities.get(1)));
+        airports.add(new Airport("0004", "广州白云机场", cities.get(2)));
+//        for (Airport a : airports) a.getAirport();
+        return airports;
     }
 }

@@ -5,13 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-import static generatorClass.AirlineGenerator.initAirport;
-import static generatorClass.AirportGenerator.initAirline;
-import static generatorClass.CityGenerator.initCity;
-import static generatorClass.FlightGenerator.initFlight;
-import static generatorClass.PlaneGenerator.initPlane;
-import static util.RandomNumber.randomNumber;
-
 public class TicketSystem {
 
     // 装填初始数据
