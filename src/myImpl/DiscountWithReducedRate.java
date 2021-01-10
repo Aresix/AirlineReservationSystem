@@ -4,17 +4,14 @@ import myInterface.IPromotion;
 
 public class DiscountWithReducedRate implements IPromotion {
 
-    int cnt; // 两件八折 三件七折 四件对折
     float rate;
 
     public DiscountWithReducedRate() {
-        // 默认两件八折
-        this.cnt = 2;
-        this.rate = (float) 0.8;
+        // 默认全场85折
+        this.rate = (float) 0.85;
     }
 
-    public DiscountWithReducedRate(int cnt, float rate) {
-        this.cnt = cnt;
+    public DiscountWithReducedRate(float rate) {
         this.rate = rate;
     }
 

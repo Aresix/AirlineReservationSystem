@@ -18,7 +18,8 @@ public class ReservationItem {
     }
 
     public int getSubtotal(){
-        return ticket.getPrice();
+//        return ticket.getPrice();
+        return ticket.getNewPrice();
     }
 
     public void printTicket(Passenger passenger) {

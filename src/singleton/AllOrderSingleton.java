@@ -19,7 +19,7 @@ public class AllOrderSingleton extends ArrayList<OrderRecord> {
     public static void printRecord() {
         if (allOrder == null || allOrder.isEmpty()) System.out.println("呀，这里空空如也，快去下单试试吧~");
         else {
-            System.out.println("序号\t航班号\t\t\t出发地\t\t\t\t目的地\t\t\t\t飞机\t\t\t乘坐人\t\t\t价格\t\t\t订单状态");
+            System.out.println("序号\t航班号\t\t\t出发地\t\t\t\t目的地\t\t\t\t飞机\t\t\t乘坐人\t\t\t价格\t\t\t实付\t\t\t订单状态");
             for (OrderRecord o : allOrder) {
                 o.printRecord(o);
             }

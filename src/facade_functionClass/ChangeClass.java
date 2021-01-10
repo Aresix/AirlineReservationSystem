@@ -1,4 +1,4 @@
-package functionClass;
+package facade_functionClass;
 
 import myClass.*;
 import singleton.AllOrderSingleton;
@@ -27,7 +27,7 @@ public class ChangeClass {
         if (changeTicketId <= reservationItems.size() && changeTicketId >= 1) {
             ReservationItem ri = reservationItems.get(changeTicketId - 1);
             if (ri.getTicket().getTicketState() == AirlineTicket.TicketState.UNUSED) {
-                curPrice = ri.getTicket().getPrice();
+                curPrice = ri.getTicket().getNewPrice();
 //                System.out.println("\t"+curPrice);
                 AirlineTicket airlineTicket = ri.getTicket();
                 FlightSingleton.clearFlightsT();
@@ -72,7 +72,6 @@ public class ChangeClass {
 //                    System.out.println("什么玩意\t"+curPrice);
                     System.out.println("改签成功，以下为改签后的订单：");
 
-                    System.out.println("\n\n恋与制作人" + r.getReservationItemsAt(0).getTicket().getState(r.getReservationItemsAt(0).getTicket().getTicketState()));
                     r.printReservationInfo();
                     // 记录改签后订单
                     AllOrderSingleton.addOrderRecord(new OrderRecord(r.getReservationItems().get(0)));

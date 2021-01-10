@@ -70,6 +70,10 @@ public class Flight {
         this.airline = airline;
     }
 
+    public Airline getAirline() {
+        return airline;
+    }
+
     public Plane getPlane() {
         return plane;
     }

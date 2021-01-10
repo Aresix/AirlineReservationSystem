@@ -1,4 +1,4 @@
-package functionClass;
+package facade_functionClass;
 
 import myClass.*;
 import singleton.AllOrderSingleton;
@@ -7,9 +7,6 @@ import singleton.ReservationSingleton;
 import singleton.TicketManagementSingleton;
 
 import java.util.Scanner;
-
-import static generatorClass.DataGenerator.planes;
-import static util.RandomNumber.randomNumber;
 
 public class BookClass {
     public void BookTicket(Reservation r) {
@@ -45,6 +42,7 @@ public class BookClass {
                         }
                         r.makePayment();
                     } else {
+                        System.out.println("放弃支付，订单已取消。");
                         // TODO: 也要写进订单记录里面
                         // 未支付
                         for (ReservationItem ri : r.getReservationItems()) {
@@ -59,6 +57,11 @@ public class BookClass {
                 Flight curFlight = FlightSingleton.getFlightsT().get(fID - 1);
                 AirlineTicket airlineTicket = new AirlineTicket(curFlight,
                         curFlight.getPlane());
+                // 开始改价
+                int price = airlineTicket.getFlight().getAirline().showPromotion(airlineTicket.getPrice());
+                airlineTicket.setNewPrice(price);
+//                airlineTicket.setPrice(curFlight.getAirline().showPromotion(airlineTicket.getPrice()));
+
 //                AirlineTicket airlineTicket = new AirlineTicket(
 //                        FlightSingleton.getFlightsT().get(fID - 1),
 //                        planes.get((fID * 1115 + 1220) % 5),

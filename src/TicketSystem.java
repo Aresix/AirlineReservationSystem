@@ -1,7 +1,6 @@
-import functionClass.*;
+import facade_functionClass.*;
 import myClass.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -24,15 +23,16 @@ public class TicketSystem {
 //    }
 
     private static void printService() {
-        java.lang.System.out.println("1.查询航班/机票信息");
-        java.lang.System.out.println("2.预定机票");
-        java.lang.System.out.println("3.改签");
-        java.lang.System.out.println("4.退订机票");
-        java.lang.System.out.println("5.个人中心");
-        java.lang.System.out.println("6.一键购票");
-        java.lang.System.out.println("7.离开");
-        java.lang.System.out.println("--------------------------------------------------");
-        java.lang.System.out.println("输入序号（仅数字，如：2），进入相应服务");
+        System.out.println("1.查询航班/机票信息");
+        System.out.println("2.预定机票");
+        System.out.println("3.改签");
+        System.out.println("4.退订机票");
+        System.out.println("5.订单中心");
+        System.out.println("6.我的关注");
+        System.out.println("7.一键购票");
+        System.out.println("8.离开");
+        System.out.println("--------------------------------------------------");
+        System.out.println("输入序号（仅数字，如：2），进入相应服务");
     }
 
     public static void main(String[] args) {
@@ -41,10 +41,10 @@ public class TicketSystem {
         Customer customer = new RegisterClass().Register();
 
         // 业务
-        java.lang.System.out.println(customer.getName() + ",欢迎你。在本系统内，你可以：");
+        System.out.println(customer.getName() + ",欢迎你。在本系统内，你可以：");
 
         printService();
-        Scanner scanner = new Scanner(java.lang.System.in);
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             boolean fin = false;
 
@@ -67,18 +67,21 @@ public class TicketSystem {
                 case 5: // 查询订单
                     new ShowOrderClass().ShowOrder();
                     break;
-                case 6:
+                case 6: // 关注航空公司
+                    new FollowClass().FollowCenter(customer);
+                    break;
+                case 7:
                     // TODO:一键购票
                     break;
-                case 7: // 退出
-                    java.lang.System.out.println("祝您旅途愉快！再见！");
+                case 8: // 退出
+                    System.out.println("祝您旅途愉快！再见！");
                     fin = true;
                     break;
                 default:
                     break;
             }
             if (fin) break;
-            java.lang.System.out.println("\n还可继续选择如下服务：");
+            System.out.println("\n还可继续选择如下服务：");
             printService();
         }
 

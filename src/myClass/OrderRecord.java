@@ -14,6 +14,7 @@ public class OrderRecord {
     private String PlaneID;
     private String PassengerName;
     private int TotalPrice;
+    private int newTotalPrice;
     private String TicketState;
 
     public OrderRecord(ReservationItem r) {
@@ -28,6 +29,7 @@ public class OrderRecord {
         this.PlaneID = this.ticket.getPlane().getPlaneID();
         this.PassengerName = this.passenger.getName();
         this.TotalPrice = this.ticket.getPrice();
+        this.newTotalPrice = this.ticket.getNewPrice();
         this.TicketState = this.ticket.getState(this.ticket.getTicketState());
     }
 
@@ -41,7 +43,7 @@ public class OrderRecord {
         Passenger p = orderRecord.passenger;
         System.out.println(orderRecord.oid + ".\t\t" + f.getFlightID() + "\t\t\t" + f.getDeparture().getName() + "\t\t\t"
                 + f.getDestination().getName() + "\t\t\t" + orderRecord.getPlaneID() + "\t\t\t" + p.getName()
-                + "\t\t\t" + t.getPrice() + "\t\t\t" + orderRecord.getTicketState());
+                + "\t\t\t" + t.getPrice() + "\t\t\t" + t.getNewPrice() + "\t\t\t" + orderRecord.getTicketState());
     }
 
     public String getFlightID() {

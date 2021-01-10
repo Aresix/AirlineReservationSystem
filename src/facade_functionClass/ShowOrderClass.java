@@ -1,8 +1,6 @@
-package functionClass;
+package facade_functionClass;
 
-import myClass.Reservation;
 import singleton.AllOrderSingleton;
-import singleton.ReservationSingleton;
 
 public class ShowOrderClass {
     public void ShowOrder(/*Reservation r*/) {

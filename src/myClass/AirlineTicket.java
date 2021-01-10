@@ -10,6 +10,7 @@ public class AirlineTicket {
     private Flight flight;
     private Plane plane;
     private int price;
+    private int newPrice;
     private int seatNO = 0;
     private TicketState ticketState;
 
@@ -21,6 +22,7 @@ public class AirlineTicket {
         this.plane = plane; // 指定飞机
         int dif = plane.getSeating() - TicketManagementSingleton.getTicketCnt(flight);
         this.price = flight.getBasePrice() + 2 * dif; // 指定价格
+        this.newPrice = this.price;
         seatNO = id;
         ticketState = TicketState.UNSOLD;
     }
@@ -61,6 +63,14 @@ public class AirlineTicket {
         this.price = price;
     }
 
+    public int getNewPrice() {
+        return newPrice;
+    }
+
+    public void setNewPrice(int newPrice) {
+        this.newPrice = newPrice;
+    }
+
     public String getState(TicketState ticketState) {
         String res = "";
         switch (ticketState) {
@@ -95,6 +105,7 @@ public class AirlineTicket {
         flight.printAirline();
         System.out.println("============================================================");
         System.out.println("价   格：" + price + "元");
+        System.out.println("实   付：" + newPrice + "元");
         System.out.println("当前机票状态：【" + getState(ticketState) + "】");
         System.out.println();
     }

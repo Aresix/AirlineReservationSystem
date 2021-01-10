@@ -1,4 +1,4 @@
-package functionClass;
+package facade_functionClass;
 
 import myClass.*;
 import singleton.AllOrderSingleton;

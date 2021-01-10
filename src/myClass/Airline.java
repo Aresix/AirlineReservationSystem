@@ -1,10 +1,11 @@
 package myClass;
 
 import myInterface.IPromotion;
+import myInterface.ISubject;
 
 import java.util.ArrayList;
 
-public class Airline {
+public class Airline implements ISubject {
 
     private IPromotion promotion;
 
@@ -42,8 +43,28 @@ public class Airline {
 
     // TODO:未完待续 还要增加 observer模式、strategy模式等
 
-    public void showPromotion() {
+    // 打折 策略
+    public int showPromotion(int totalPrice) {
         // TODO: 打折策略实现
+        return promotion.recalculate(totalPrice);
     }
 
+    public void makePromotion() {
+
+    }
+
+    @Override
+    public void AttachCustomer(Customer customer) {
+
+    }
+
+    @Override
+    public void DetachCustomer(Customer customer) {
+
+    }
+
+    @Override
+    public void notifyCustomer() {
+
+    }
 }

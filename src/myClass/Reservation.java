@@ -45,24 +45,24 @@ public class Reservation {
 
     public void printSimpleReservationInfo() {
         int i = 0;
-        System.out.println("序号\t航班号\t\t\t飞机\t\t\t价格\t\t\t乘坐人");
+        System.out.println("序号\t航班号\t\t\t飞机\t\t\t原价\t\t\t实付\t\t\t乘坐人");
         for (ReservationItem r : reservationItems) {
             ++i;
             System.out.println(i + ".\t\t" + r.getTicket().getFlight().getFlightID() + "\t\t\t"
-                    + r.getTicket().getPlane().getPlaneID() + "\t\t\t" + r.getTicket().getPrice() +
-                    "\t\t\t" + r.getPassenger().getName());
+                    + r.getTicket().getPlane().getPlaneID() + "\t\t\t" + r.getTicket().getPrice()
+                    + "\t\t\t" + r.getTicket().getNewPrice() + "\t\t\t" + r.getPassenger().getName());
         }
     }
 
     public void printSimpleReservationInfo(ArrayList<ReservationItem> items) {
         if (items != null) {
             int i = 0;
-            System.out.println("序号\t航班号\t\t\t飞机\t\t\t价格\t\t\t乘坐人");
+            System.out.println("序号\t航班号\t\t\t飞机\t\t\t原价\t\t\t实付\t\t\t乘坐人");
             for (ReservationItem r : items) {
                 ++i;
                 System.out.println(i + ".\t\t" + r.getTicket().getFlight().getFlightID() + "\t\t\t"
-                        + r.getTicket().getPlane().getPlaneID() + "\t\t\t" + r.getTicket().getPrice() +
-                        "\t\t\t" + r.getPassenger().getName());
+                        + r.getTicket().getPlane().getPlaneID() + "\t\t\t" + r.getTicket().getPrice()
+                        + "\t\t\t" + r.getTicket().getNewPrice() + "\t\t\t" + r.getPassenger().getName());
             }
         }
     }
