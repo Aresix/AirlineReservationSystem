@@ -71,8 +71,8 @@ public class TicketSystem {
                 case 6: // 关注航空公司
                     new FollowClass().FollowCenter(customer);
                     break;
-                case 7:
-                    // TODO:一键购票
+                case 7: // 一键购票
+                    new QuickBookClass().book(customer, r);
                     break;
                 case 8:
                     new RefreshClass().refresh();

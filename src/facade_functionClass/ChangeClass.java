@@ -46,7 +46,7 @@ public class ChangeClass {
                 if (flightsT.isEmpty()) {
                     System.out.println("没有合适的可供改签的航班，请移步退票操作。");
                 } else {
-                    System.out.println("请输入你想改签的航班编号：(输入0可以退出)");
+                    System.out.println("请输入你想改签的航班编号：(输入-1可以退出)");
                     scanner = new Scanner(System.in);
                     int nfID = Integer.parseInt(scanner.next());
                     Flight newFlight = flightsT.get(nfID - 1);
