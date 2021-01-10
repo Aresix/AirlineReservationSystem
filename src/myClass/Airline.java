@@ -1,11 +1,16 @@
 package myClass;
 
+import myInterface.IPromotion;
+
 import java.util.ArrayList;
 
 public class Airline {
-    String airlineID = "";
-    String name = "";
-    ArrayList<Flight> flights = new ArrayList<Flight>();
+
+    private IPromotion promotion;
+
+    private String airlineID = "";
+    private String name = "";
+    private ArrayList<Flight> flights = new ArrayList<Flight>();
 
     public void getAirline() {
         System.out.println("当前航空公司： " + name + "\t编号为： " + airlineID);
@@ -16,7 +21,7 @@ public class Airline {
     }
 
     public void setAirlineID(String airlineID) {
-        this.airlineID=airlineID;
+        this.airlineID = airlineID;
     }
 
     public String getName() {
@@ -24,7 +29,7 @@ public class Airline {
     }
 
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     public void createFlight(Flight flight) {
@@ -36,5 +41,9 @@ public class Airline {
     }
 
     // TODO:未完待续 还要增加 observer模式、strategy模式等
+
+    public void showPromotion() {
+        // TODO: 打折策略实现
+    }
 
 }

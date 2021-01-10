@@ -1,14 +1,16 @@
 package myClass;
 
 public class AirlineTicket {
-    public static enum TicketState {UNSOLD, NON_PAYMENT, UNUSED, IN_TRAVEL, USED};
+    public static enum TicketState {UNSOLD, UNPAID, UNUSED, IN_TRAVEL, USED, CANCELED}
+
+    ;
 
     private static int id = 0;
     private String ticketID;
     private Flight flight;
     private Plane plane;
     private int price;
-    private int seatNO=0;
+    private int seatNO = 0;
     private TicketState ticketState;
 
     public AirlineTicket(Flight flight, Plane plane, int price) {
@@ -58,38 +60,41 @@ public class AirlineTicket {
         this.price = price;
     }
 
-    private String getState(TicketState ticketState){
-        String res="";
-        switch (ticketState){
+    public String getState(TicketState ticketState) {
+        String res = "";
+        switch (ticketState) {
             case USED:
-                res="已完成";
+                res = "已完成";
                 break;
             case UNSOLD:
-                res="待出售";
+                res = "待出售";
                 break;
             case UNUSED:
-                res="未使用";
+                res = "未使用";
                 break;
             case IN_TRAVEL:
-                res="旅途中";
+                res = "旅途中";
                 break;
-            case NON_PAYMENT:
-                res="待支付";
+            case UNPAID:
+                res = "未支付";
+                break;
+            case CANCELED:
+                res = "已取消";
                 break;
         }
         return res;
     }
 
-    public void printTicket(String passengerName){
+    public void printTicket(Passenger passenger) {
         System.out.println("============================================================");
-        System.out.println("机票编号：【"+ticketID+"】");
-        System.out.println("航班编号：【"+flight.getFlightID()+"】");
+        System.out.println("机票编号：【" + ticketID + "】");
+        System.out.println("航班编号：【" + flight.getFlightID() + "】");
         plane.getPlane();
-        System.out.println(passengerName+"\t的座位号为："+seatNO);
+        System.out.println(passenger.getName() + "\t的座位号为：" + seatNO);
         flight.printAirline();
         System.out.println("============================================================");
-        System.out.println("价   格："+price+"元");
-        System.out.println("当前机票状态：【"+getState(ticketState)+"】");
+        System.out.println("价   格：" + price + "元");
+        System.out.println("当前机票状态：【" + getState(ticketState) + "】");
         System.out.println();
     }
 }

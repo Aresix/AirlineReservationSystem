@@ -18,6 +18,15 @@ public class Flight {
         this.airline = airline;
     }
 
+    public Flight(Airport departure, Airport destination, String flightID, Date date, Airline airline, Plane plane) {
+        this.departure = departure;
+        this.destination = destination;
+        this.flightID = flightID;
+        this.date = date;
+        this.airline = airline;
+        this.plane = plane;
+    }
+
     public Airport getDeparture() {
         return departure;
     }

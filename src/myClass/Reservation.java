@@ -77,7 +77,7 @@ public class Reservation {
             ++i;
             System.out.println("第\t"+i+"\t条");
 
-            r.printTicket(r.getPassenger().getName());
+            r.printTicket(r.getPassenger());
             System.out.println();
         }
     }
@@ -98,7 +98,7 @@ public class Reservation {
             ++i;
             System.out.println("第\t"+i+"\t条");
 
-            r.printTicket(r.getPassenger().getName());
+            r.printTicket(r.getPassenger());
             System.out.println();
         }
     }

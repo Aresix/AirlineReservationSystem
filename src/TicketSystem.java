@@ -1,6 +1,5 @@
 import functionClass.*;
 import myClass.*;
-import singleton.ReservationSingleton;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,7 +65,7 @@ public class TicketSystem {
                     new RefundClass().Refund(r);
                     break;
                 case 5: // 查询订单
-                    new SearchOrderClass().SearchOrder(r);
+                    new ShowOrderClass().ShowOrder();
                     break;
                 case 6:
                     // TODO:一键购票

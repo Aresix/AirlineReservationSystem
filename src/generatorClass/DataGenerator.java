@@ -14,7 +14,7 @@ public class DataGenerator {
     public static ArrayList<City> cities = initCity();
     public static ArrayList<Airport> airports = initAirport(cities);
     public static ArrayList<Airline> airlines = initAirline();
-    public static ArrayList<Flight> flights = initFlight(airports, airlines);
     public static ArrayList<Plane> planes = initPlane();
+    public static ArrayList<Flight> flights = initFlight();
 //        initTicket(flights, planes);
 }

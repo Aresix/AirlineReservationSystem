@@ -21,11 +21,12 @@ public class ReservationItem {
         return ticket.getPrice();
     }
 
-    public void printTicket(String passengerName){
+    public void printTicket(Passenger passenger) {
         System.out.println("============================================================");
-        System.out.println("乘客姓名：\t"+passenger.getName());
-        System.out.println("身份证号：\t"+passenger.getIDcard());
-        System.out.println("联系方式：\t"+passenger.getTelephone());
-        ticket.printTicket(passengerName);
+        System.out.println("乘客姓名：\t" + passenger.getName());
+        System.out.println("身份证号：\t" + passenger.getIDcard());
+        System.out.println("联系方式：\t" + passenger.getTelephone());
+        ticket.setTicketState(AirlineTicket.TicketState.UNPAID);
+        ticket.printTicket(passenger);
     }
 }
