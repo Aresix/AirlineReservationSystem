@@ -16,12 +16,12 @@ public class TicketSystem {
 //    public static ArrayList<ReservationItem> reservationItems = new ArrayList<ReservationItem>();
 
 
-    private static void initTicket(ArrayList<Flight> flight, ArrayList<Plane> planes) {
-        AirlineTicket ticket = new AirlineTicket(flight.get(0), planes.get(2), 800);
-//        ticket.printTicket();
-        ticket = new AirlineTicket(flight.get(2), planes.get(1), 1200);
-//        ticket.printTicket();
-    }
+//    private static void initTicket(ArrayList<Flight> flight, ArrayList<Plane> planes) {
+//        AirlineTicket ticket = new AirlineTicket(flight.get(0), planes.get(2), 800);
+////        ticket.printTicket();
+//        ticket = new AirlineTicket(flight.get(2), planes.get(1), 1200);
+////        ticket.printTicket();
+//    }
 
     private static void printService() {
         java.lang.System.out.println("1.查询航班/机票信息");

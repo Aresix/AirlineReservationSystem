@@ -12,6 +12,8 @@ import java.util.Scanner;
 import static generatorClass.DataGenerator.flights;
 
 public class ChangeClass {
+    private int curPrice = 0;
+
     public void Change(Reservation r) {
         System.out.println("以下是您的订单：");
         ArrayList<ReservationItem> reservationItems = ReservationSingleton.getReservationItems();
@@ -25,6 +27,8 @@ public class ChangeClass {
         if (changeTicketId <= reservationItems.size() && changeTicketId >= 1) {
             ReservationItem ri = reservationItems.get(changeTicketId - 1);
             if (ri.getTicket().getTicketState() == AirlineTicket.TicketState.UNUSED) {
+                curPrice = ri.getTicket().getPrice();
+//                System.out.println("\t"+curPrice);
                 AirlineTicket airlineTicket = ri.getTicket();
                 FlightSingleton.clearFlightsT();
                 Airport departure = airlineTicket.getFlight().getDeparture();
@@ -53,14 +57,30 @@ public class ChangeClass {
                     // 让他继续卖
                     TicketManagementSingleton.refundTicket(ri.getTicket().getFlight());
                     ri.getTicket().setTicketState(AirlineTicket.TicketState.UNSOLD);
+                    reservationItems.remove(ri);
                     // 改签
-                    TicketManagementSingleton.bookTicket(ri.getTicket().getFlight());
-                    ri.getTicket().setTicketState(AirlineTicket.TicketState.UNUSED);
-                    r.makeReservationItem(airlineTicket, ri.getPassenger());
+                    TicketManagementSingleton.bookTicket(newFlight);
+                    ReservationItem reservationItem =
+                            new ReservationItem(new AirlineTicket(newFlight, newFlight.getPlane()),
+                                    ri.getPassenger());
+//                    System.out.println("怎么能是负的呢？？\t"+reservationItem.getTicket().getPrice());
+                    reservationItem.getTicket().setTicketState(AirlineTicket.TicketState.UNUSED);
+
+                    r.makeReservationItem(reservationItem.getTicket(), reservationItem.getPassenger());
+//                    System.out.println("烦死了\t"+airlineTicket.getPrice());
+                    curPrice = reservationItem.getTicket().getPrice() - curPrice;
+//                    System.out.println("什么玩意\t"+curPrice);
                     System.out.println("改签成功，以下为改签后的订单：");
+
+                    System.out.println("\n\n恋与制作人" + r.getReservationItemsAt(0).getTicket().getState(r.getReservationItemsAt(0).getTicket().getTicketState()));
                     r.printReservationInfo();
                     // 记录改签后订单
-                    AllOrderSingleton.addOrderRecord(new OrderRecord(ri));
+                    AllOrderSingleton.addOrderRecord(new OrderRecord(r.getReservationItems().get(0)));
+                    ReservationSingleton.addReservationItems(r.getReservationItems().get(0));
+
+                    System.out.print("改签后，价格发生变动。");
+                    if (curPrice > 0) System.out.println("您还需支付\t" + curPrice + " 元。\n\n支付完成！");
+                    else System.out.println("您将收到退款\t" + (-1 * curPrice) + " 元。\n\n退款成功！");
                 }
             } else {
                 System.out.println("该机票无法改签，具体原因为：\t【" +

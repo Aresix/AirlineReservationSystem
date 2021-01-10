@@ -58,7 +58,7 @@ public class BookClass {
             } else if (fID > 0) {
                 Flight curFlight = FlightSingleton.getFlightsT().get(fID - 1);
                 AirlineTicket airlineTicket = new AirlineTicket(curFlight,
-                        curFlight.getPlane(), randomNumber(11, 30) * 100);
+                        curFlight.getPlane());
 //                AirlineTicket airlineTicket = new AirlineTicket(
 //                        FlightSingleton.getFlightsT().get(fID - 1),
 //                        planes.get((fID * 1115 + 1220) % 5),

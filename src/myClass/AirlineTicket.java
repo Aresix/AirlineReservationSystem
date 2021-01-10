@@ -1,5 +1,7 @@
 package myClass;
 
+import singleton.TicketManagementSingleton;
+
 public class AirlineTicket {
     public enum TicketState {UNSOLD, UNPAID, UNUSED, IN_TRAVEL, USED, CANCELED}
 
@@ -11,15 +13,16 @@ public class AirlineTicket {
     private int seatNO = 0;
     private TicketState ticketState;
 
-    public AirlineTicket(Flight flight, Plane plane, int price) {
+    public AirlineTicket(Flight flight, Plane plane) {
         String tidRoot = "TID_111512200202_"; // 机票编号Root
-        ticketID= tidRoot +id; // 完整的机票编号
+        ticketID = tidRoot + id; // 完整的机票编号
         id++;
         this.flight = flight; // 指定航班
         this.plane = plane; // 指定飞机
-        this.price = price; // 指定价格
-        seatNO=id;
-        ticketState=TicketState.UNSOLD;
+        int dif = plane.getSeating() - TicketManagementSingleton.getTicketCnt(flight);
+        this.price = flight.getBasePrice() + 2 * dif; // 指定价格
+        seatNO = id;
+        ticketState = TicketState.UNSOLD;
     }
 
     public TicketState getTicketState() {

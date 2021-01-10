@@ -17,7 +17,8 @@ public class FlightSingleton extends ArrayList<Flight> {
     }
 
     public static void clearFlightsT() {
-        flightsT.clear();
+        if (flightsT != null)
+            flightsT.clear();
     }
 
     public static synchronized ArrayList<Flight> getFlightsT() {

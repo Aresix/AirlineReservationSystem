@@ -35,7 +35,10 @@ public class FlightGenerator {
             }
             planeIndex.set(pIndex, 1);
             Plane plane = DataGenerator.planes.get(pIndex);
-            Flight flight = new Flight(DataGenerator.airports.get(depIndex), DataGenerator.airports.get(desIndex),
+//            Flight flight = new Flight(DataGenerator.airports.get(depIndex), DataGenerator.airports.get(desIndex),
+//                    "F" + lb + "00_" + turn + "00" + turn, new Date(),
+//                    airline, DataGenerator.planes.get(pIndex));
+            Flight flight = new Flight(DataGenerator.airports.get(1), DataGenerator.airports.get(3),
                     "F" + lb + "00_" + turn + "00" + turn, new Date(),
                     airline, DataGenerator.planes.get(pIndex));
             flights.add(flight);

@@ -12,6 +12,8 @@ import static generatorClass.DataGenerator.flights;
 
 public class QueryClass {
     public void Query() {
+        FlightSingleton.clearFlightsT();
+
         ArrayList<Flight> flightsT = FlightSingleton.getFlightsT();
 //        FlightSingleton.clearFlightsT();
         java.lang.System.out.println("本系统仅提供【1】上海【2】北京【3】广州三地之间的机票。");

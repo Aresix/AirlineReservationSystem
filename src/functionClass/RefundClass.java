@@ -13,6 +13,10 @@ public class RefundClass {
     public void Refund(Reservation r) {
         System.out.println("以下是您的订单：");
         ArrayList<ReservationItem> reservationItems = ReservationSingleton.getReservationItems();
+        if (reservationItems == null) {
+            System.out.println("您暂时没有可以机票可以退订。");
+            return;
+        }
         r.printSimpleReservationInfo(reservationItems);
         System.out.println("============================================================");
         System.out.println("输入要退的订单编号：(若输入数字不在范围内，则视为放弃退票，回到主界面)");
