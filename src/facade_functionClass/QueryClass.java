@@ -43,7 +43,7 @@ public class QueryClass {
 
         System.out.println("为您检索到如下航班信息：");
         System.out.println("若您想要购买某一航班的机票，请记住它的编号，以便后续购票。");
-        // TODO：怂恿商家搞活动
+        // 怂恿商家搞活动
         promote();
         int i = 0;
         if (departureID == 0 && destinationID == 0) {

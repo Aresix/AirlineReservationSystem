@@ -78,12 +78,9 @@ public class DongFangAirline extends Airline {
         god = RandomNumber.randomNumber(0, 255) % 4;
         String proInfo = DataGenerator.promotionSlogan.get(god);
         // UPDATE
-        // TODO：这对xx全一到外面去
-        System.out.println("********************************************");
         notifyCustomer();
         System.out.println("********************************************");
         System.out.println("【" + name + "】：\t" + proInfo);
-        System.out.println("********************************************");
     }
 
     private int execPro(int totalPrice, int god) {

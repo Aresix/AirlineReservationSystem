@@ -30,7 +30,8 @@ public class TicketSystem {
         System.out.println("5.订单中心");
         System.out.println("6.我的关注");
         System.out.println("7.一键购票");
-        System.out.println("8.离开");
+        System.out.println("8.刷新轮次");
+        System.out.println("9.离开");
         System.out.println("--------------------------------------------------");
         System.out.println("输入序号（仅数字，如：2），进入相应服务");
     }
@@ -73,7 +74,10 @@ public class TicketSystem {
                 case 7:
                     // TODO:一键购票
                     break;
-                case 8: // 退出
+                case 8:
+                    new RefreshClass().refresh();
+                    break;
+                case 9: // 退出
                     System.out.println("祝您旅途愉快！再见！");
                     fin = true;
                     break;
