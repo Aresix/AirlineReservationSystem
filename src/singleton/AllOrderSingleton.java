@@ -1,5 +1,6 @@
 package singleton;
 
+import myClass.AirlineTicket;
 import myClass.OrderRecord;
 
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public class AllOrderSingleton extends ArrayList<OrderRecord> {
         }
     }
 
+    public static void updateStatus(OrderRecord o, String state) {
+        o.setTicketState(state);
+    }
 
     public static synchronized ArrayList<OrderRecord> getAllOrder() {
         return allOrder;

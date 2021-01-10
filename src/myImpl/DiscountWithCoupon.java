@@ -29,6 +29,7 @@ public class DiscountWithCoupon implements IPromotion {
     public int recalculate(int origin_price) {
 //        System.out.println("【优惠券活动】现有1张优惠券：满" + threshold + "元减" + discount_amount + "元待使用");
 //        System.out.println("\t原价为："+origin_price+"。此轮共省" + discount_amount + "元");
+
         return (int) (origin_price - discount_amount);
     }
 }

@@ -62,6 +62,10 @@ public class OrderRecord {
         PlaneID = planeID;
     }
 
+    public void setTicketState(String ticketState) {
+        TicketState = ticketState;
+    }
+
     public String getTicketState() {
         return TicketState;
     }

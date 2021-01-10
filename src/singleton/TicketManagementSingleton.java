@@ -15,6 +15,10 @@ public class TicketManagementSingleton extends HashMap<Flight, Integer> {
         ticketManagement.put(flight, flight.getPlane().getSeating());
     }
 
+    public static void clearFlight() {
+        ticketManagement.clear();
+    }
+
     public static boolean bookTicket(Flight flight) {
         int tp = ticketManagement.get(flight);
         if (tp == 0) return false;

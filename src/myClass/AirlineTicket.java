@@ -71,7 +71,7 @@ public class AirlineTicket {
         this.newPrice = newPrice;
     }
 
-    public String getState(TicketState ticketState) {
+    public static String getState(TicketState ticketState) {
         String res = "";
         switch (ticketState) {
             case USED:

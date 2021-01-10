@@ -14,29 +14,31 @@ import java.util.Date;
 public class FlightGenerator {
     private static int turn = 0;
 
+    private static ArrayList<Flight> flights = new ArrayList<Flight>();
+
     public static ArrayList<Flight> initFlight(/*ArrayList<Airport> airports, ArrayList<Airline> airlines*/) {
         int i = 0;
 //        Date date = new Date();
 //        date.setDate(23);
-        ArrayList<Flight> flights = new ArrayList<Flight>();
+        flights = new ArrayList<Flight>();
 
         ArrayList<Integer> planeIndex = new ArrayList<Integer>(PlaneGenerator.planeCnt);
         for (int p = 0; p < PlaneGenerator.planeCnt; p++) planeIndex.add(0);
         for (Airline airline : DataGenerator.airlines) {
-//            for (int j = 0; j < 3; j++) {
-            String id = airline.getAirlineID();
-            String lb = String.valueOf(id.charAt(id.length() - 1));
-            RandomDDPair ddPair = new RandomDDPair();
-            int depIndex = ddPair.getDeparture() - 1;
-            int desIndex = ddPair.getDestination() - 1;
-            int pIndex = RandomNumber.randomNumber(1, PlaneGenerator.planeCnt) - 1;
-            while (planeIndex.get(pIndex) != 0) {
-                pIndex = RandomNumber.randomNumber(1, PlaneGenerator.planeCnt) - 1;
-            }
-            planeIndex.set(pIndex, 1);
+            for (int j = 0; j < 2; j++) {
+                String id = airline.getAirlineID();
+                String lb = String.valueOf(id.charAt(id.length() - 1));
+                RandomDDPair ddPair = new RandomDDPair();
+                int depIndex = ddPair.getDeparture() - 1;
+                int desIndex = ddPair.getDestination() - 1;
+                int pIndex = RandomNumber.randomNumber(1, PlaneGenerator.planeCnt) - 1;
+                while (planeIndex.get(pIndex) != 0) {
+                    pIndex = RandomNumber.randomNumber(1, PlaneGenerator.planeCnt) - 1;
+                }
+                planeIndex.set(pIndex, 1);
             Plane plane = DataGenerator.planes.get(pIndex);
             Flight flight = new Flight(DataGenerator.airports.get(depIndex), DataGenerator.airports.get(desIndex),
-                    "F" + lb + "00_" + turn + "00" + turn, new Date(),
+                    "F" + lb + "00_" + turn + "00" + (++j), new Date(),
                     airline, DataGenerator.planes.get(pIndex));
 //            Flight flight = new Flight(DataGenerator.airports.get(1), DataGenerator.airports.get(3),
 //                    "F" + lb + "00_" + turn + "00" + turn, new Date(),
@@ -44,7 +46,7 @@ public class FlightGenerator {
             flights.add(flight);
             airline.createFlight(flight);
             TicketManagementSingleton.addFlight(flight);
-//            }
+            }
         }
 //        flights.add(new Flight(airports.get(2), airports.get(0), "F000001", date, airlines.get(0)));
 //        airlines.get(0).createFlight(flights.get(i++));
@@ -71,6 +73,10 @@ public class FlightGenerator {
 //                flight.printAirline();
 //            }
 //        }
+        return flights;
+    }
+
+    public static ArrayList<Flight> getFlights() {
         return flights;
     }
 
