@@ -4,6 +4,7 @@ import myClass.*;
 import singleton.AllOrderSingleton;
 import singleton.FlightSingleton;
 import singleton.ReservationSingleton;
+import singleton.TicketManagementSingleton;
 
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ import static util.RandomNumber.randomNumber;
 public class BookClass {
     public void BookTicket(Reservation r) {
         while (true) {
-            System.out.println("请输入你想预定的航班编号：(输入0可以退出)");
+            System.out.println("请输入你想预定的航班编号：(输入0进行结算，输入-1退出)");
             Scanner scanner = new Scanner(System.in);
             int fID = Integer.parseInt(scanner.next());
             if (fID == 0) {
@@ -25,9 +26,17 @@ public class BookClass {
                     if (scanner.next().equals("1")) {
                         System.out.println("您已确认订单，准备扣款");
                         for (ReservationItem ri : r.getReservationItems()) {
-                            ri.getTicket().setTicketState(AirlineTicket.TicketState.UNUSED);
-                            ReservationSingleton.addReservationItems(ri);
-                            AllOrderSingleton.addOrderRecord(new OrderRecord(ri));
+                            boolean book = TicketManagementSingleton.bookTicket(ri.getTicket().getFlight());
+                            if (book) {
+                                ri.getTicket().setTicketState(AirlineTicket.TicketState.UNUSED);
+                                ReservationSingleton.addReservationItems(ri);
+                                AllOrderSingleton.addOrderRecord(new OrderRecord(ri));
+                            } else {
+                                System.out.println("**************************************");
+                                System.out.println("【购票失败】");
+                                System.out.println("编号为:\t【" + ri.getTicket().getTicketID() + "】的机票已售罄。");
+                                System.out.println("**************************************");
+                            }
                         }
                         try {
                             Thread.sleep(1200);
@@ -46,11 +55,14 @@ public class BookClass {
                     FlightSingleton.clearFlightsT();
                     break;
                 }
-            } else {
-                AirlineTicket airlineTicket = new AirlineTicket(
-                        FlightSingleton.getFlightsT().get(fID - 1),
-                        planes.get((fID * 1115 + 1220) % 5),
-                        randomNumber(11, 30) * 100);
+            } else if (fID > 0) {
+                Flight curFlight = FlightSingleton.getFlightsT().get(fID - 1);
+                AirlineTicket airlineTicket = new AirlineTicket(curFlight,
+                        curFlight.getPlane(), randomNumber(11, 30) * 100);
+//                AirlineTicket airlineTicket = new AirlineTicket(
+//                        FlightSingleton.getFlightsT().get(fID - 1),
+//                        planes.get((fID * 1115 + 1220) % 5),
+//                        randomNumber(11, 30) * 100);
                 System.out.println("请完善乘坐人信息：");
                 System.out.println("请输入乘坐人的名字：");
                 scanner = new Scanner(System.in);
@@ -63,6 +75,8 @@ public class BookClass {
                 String telephone = scanner.next();
                 Passenger passenger = new Passenger(name, IDCard, telephone);
                 r.makeReservationItem(airlineTicket, passenger);
+            } else {
+                break;
             }
         }
     }

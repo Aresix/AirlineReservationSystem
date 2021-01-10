@@ -4,6 +4,7 @@ import myClass.*;
 import singleton.AllOrderSingleton;
 import singleton.FlightSingleton;
 import singleton.ReservationSingleton;
+import singleton.TicketManagementSingleton;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -50,8 +51,10 @@ public class ChangeClass {
                     ri.getTicket().setTicketState(AirlineTicket.TicketState.CANCELED);
                     AllOrderSingleton.addOrderRecord(new OrderRecord(ri));
                     // 让他继续卖
+                    TicketManagementSingleton.refundTicket(ri.getTicket().getFlight());
                     ri.getTicket().setTicketState(AirlineTicket.TicketState.UNSOLD);
                     // 改签
+                    TicketManagementSingleton.bookTicket(ri.getTicket().getFlight());
                     ri.getTicket().setTicketState(AirlineTicket.TicketState.UNUSED);
                     r.makeReservationItem(airlineTicket, ri.getPassenger());
                     System.out.println("改签成功，以下为改签后的订单：");

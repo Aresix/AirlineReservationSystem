@@ -2,6 +2,7 @@ package functionClass;
 
 import myClass.Flight;
 import singleton.FlightSingleton;
+import singleton.TicketManagementSingleton;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -31,6 +32,7 @@ public class QueryClass {
                 i++;
                 java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                 f.printAirline();
+                System.out.println("当前剩余机票数量为：\t" + TicketManagementSingleton.getTicketCnt(f));
                 FlightSingleton.setFlightsT(f);
             }
         } else if (departureID == 0) {
@@ -39,6 +41,7 @@ public class QueryClass {
                     i++;
                     java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                     f.printAirline();
+                    System.out.println("当前剩余机票数量为：\t" + TicketManagementSingleton.getTicketCnt(f));
                     FlightSingleton.setFlightsT(f);
                 }
             }
@@ -48,6 +51,7 @@ public class QueryClass {
                     i++;
                     java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                     f.printAirline();
+                    System.out.println("当前剩余机票数量为：\t" + TicketManagementSingleton.getTicketCnt(f));
                     FlightSingleton.setFlightsT(f);
                 }
             }
@@ -58,6 +62,7 @@ public class QueryClass {
                     i++;
                     java.lang.System.out.println("\n>>> 第\t" + i + "\t条 <<<");
                     f.printAirline();
+                    System.out.println("当前剩余机票数量为：\t" + TicketManagementSingleton.getTicketCnt(f));
                     FlightSingleton.setFlightsT(f);
                 }
             }

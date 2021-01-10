@@ -14,7 +14,7 @@ public class OrderRecord {
     private String PlaneID;
     private String PassengerName;
     private int TotalPrice;
-    private AirlineTicket.TicketState TicketState;
+    private String TicketState;
 
     public OrderRecord(ReservationItem r) {
         this.oid = ++id;
@@ -28,7 +28,7 @@ public class OrderRecord {
         this.PlaneID = this.ticket.getPlane().getPlaneID();
         this.PassengerName = this.passenger.getName();
         this.TotalPrice = this.ticket.getPrice();
-        this.TicketState = this.ticket.getTicketState();
+        this.TicketState = this.ticket.getState(this.ticket.getTicketState());
     }
 
 //    public void getOrderRecord(){
@@ -41,7 +41,7 @@ public class OrderRecord {
         Passenger p = orderRecord.passenger;
         System.out.println(orderRecord.oid + ".\t\t" + f.getFlightID() + "\t\t\t" + f.getDeparture().getName() + "\t\t\t"
                 + f.getDestination().getName() + "\t\t\t" + orderRecord.getPlaneID() + "\t\t\t" + p.getName()
-                + "\t\t\t" + t.getPrice() + "\t\t\t" + t.getState(t.getTicketState()));
+                + "\t\t\t" + t.getPrice() + "\t\t\t" + orderRecord.getTicketState());
     }
 
     public String getFlightID() {
@@ -58,5 +58,9 @@ public class OrderRecord {
 
     public void setPlaneID(String planeID) {
         PlaneID = planeID;
+    }
+
+    public String getTicketState() {
+        return TicketState;
     }
 }

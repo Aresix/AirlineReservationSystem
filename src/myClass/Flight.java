@@ -1,5 +1,7 @@
 package myClass;
 
+import singleton.TicketManagementSingleton;
+
 import java.util.Date;
 
 public class Flight {

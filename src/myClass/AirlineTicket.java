@@ -1,9 +1,7 @@
 package myClass;
 
 public class AirlineTicket {
-    public static enum TicketState {UNSOLD, UNPAID, UNUSED, IN_TRAVEL, USED, CANCELED}
-
-    ;
+    public enum TicketState {UNSOLD, UNPAID, UNUSED, IN_TRAVEL, USED, CANCELED}
 
     private static int id = 0;
     private String ticketID;

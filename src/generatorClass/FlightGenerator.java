@@ -4,6 +4,7 @@ import myClass.Airline;
 import myClass.Airport;
 import myClass.Flight;
 import myClass.Plane;
+import singleton.TicketManagementSingleton;
 import util.RandomDDPair;
 import util.RandomNumber;
 
@@ -22,26 +23,25 @@ public class FlightGenerator {
         ArrayList<Integer> planeIndex = new ArrayList<Integer>(PlaneGenerator.planeCnt);
         for (int p = 0; p < PlaneGenerator.planeCnt; p++) planeIndex.add(0);
         for (Airline airline : DataGenerator.airlines) {
-            for (int j = 0; j < 3; j++) {
-                String id = airline.getAirlineID();
-                String lb = String.valueOf(id.charAt(id.length() - 1));
-                RandomDDPair ddPair = new RandomDDPair();
-                int depIndex = ddPair.getDeparture() - 1;
-                int desIndex = ddPair.getDestination() - 1;
-                int pIndex = RandomNumber.randomNumber(1, PlaneGenerator.planeCnt) - 1;
-                while (planeIndex.get(pIndex) != 0) {
-                    pIndex = RandomNumber.randomNumber(1, PlaneGenerator.planeCnt) - 1;
-                }
-                planeIndex.set(pIndex, 1);
-                Plane plane = DataGenerator.planes.get(pIndex);
-                plane.getPlane();
-                System.out.println("xumo");
-                Flight flight = new Flight(DataGenerator.airports.get(depIndex), DataGenerator.airports.get(desIndex),
-                        "F" + lb + "00_" + turn + "00" + (j + 1), new Date(),
-                        airline, DataGenerator.planes.get(pIndex));
-                flights.add(flight);
-                airline.createFlight(flight);
+//            for (int j = 0; j < 3; j++) {
+            String id = airline.getAirlineID();
+            String lb = String.valueOf(id.charAt(id.length() - 1));
+            RandomDDPair ddPair = new RandomDDPair();
+            int depIndex = ddPair.getDeparture() - 1;
+            int desIndex = ddPair.getDestination() - 1;
+            int pIndex = RandomNumber.randomNumber(1, PlaneGenerator.planeCnt) - 1;
+            while (planeIndex.get(pIndex) != 0) {
+                pIndex = RandomNumber.randomNumber(1, PlaneGenerator.planeCnt) - 1;
             }
+            planeIndex.set(pIndex, 1);
+            Plane plane = DataGenerator.planes.get(pIndex);
+            Flight flight = new Flight(DataGenerator.airports.get(depIndex), DataGenerator.airports.get(desIndex),
+                    "F" + lb + "00_" + turn + "00" + turn, new Date(),
+                    airline, DataGenerator.planes.get(pIndex));
+            flights.add(flight);
+            airline.createFlight(flight);
+            TicketManagementSingleton.addFlight(flight);
+//            }
         }
 //        flights.add(new Flight(airports.get(2), airports.get(0), "F000001", date, airlines.get(0)));
 //        airlines.get(0).createFlight(flights.get(i++));

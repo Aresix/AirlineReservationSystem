@@ -3,6 +3,7 @@ package functionClass;
 import myClass.*;
 import singleton.AllOrderSingleton;
 import singleton.ReservationSingleton;
+import singleton.TicketManagementSingleton;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -25,6 +26,7 @@ public class RefundClass {
             scanner = new Scanner(System.in);
             int confirmRefund = Integer.parseInt(scanner.next());
             if (confirmRefund == 1) {
+                TicketManagementSingleton.refundTicket(airlineTicket.getFlight());
                 airlineTicket.setTicketState(AirlineTicket.TicketState.CANCELED);
                 AllOrderSingleton.addOrderRecord(new OrderRecord(reservationItems.get(fundTicketId - 1)));
                 airlineTicket.setTicketState(AirlineTicket.TicketState.UNSOLD);
